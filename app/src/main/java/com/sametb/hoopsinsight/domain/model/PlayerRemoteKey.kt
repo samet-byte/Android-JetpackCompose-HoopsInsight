@@ -18,8 +18,8 @@ data class PlayerRemoteKey(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
 
-    val prevKey: Int?,
-    val nextKey: Int?
+    val prevPage: Int?,
+    val nextPage: Int?
 
 
 )
