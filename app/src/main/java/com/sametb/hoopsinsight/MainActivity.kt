@@ -7,7 +7,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.sametb.hoopsinsight.nav.SetupNavGraph
 import com.sametb.hoopsinsight.ui.theme.HoopsInsightTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
