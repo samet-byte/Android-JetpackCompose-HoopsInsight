@@ -3,6 +3,8 @@ package com.sametb.hoopsinsight.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.sametb.hoopsinsight.data.local.dao.PlayerDao
+import com.sametb.hoopsinsight.data.local.dao.PlayerRemoteKeyDao
+import com.sametb.hoopsinsight.domain.model.PlayerRemoteKey
 import com.sametb.hoopsinsight.domain.model.player.Player
 
 
@@ -13,8 +15,10 @@ import com.sametb.hoopsinsight.domain.model.player.Player
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
-@Database(entities = [Player::class], version = 1) // , exportSchema = false
+@Database(entities = [Player::class, PlayerRemoteKey::class], version = 1) // , exportSchema = false
 abstract class PlayerDatabase: RoomDatabase() {
 
     abstract fun playerDao(): PlayerDao
+
+    abstract fun remoteKeyDao(): PlayerRemoteKeyDao
 }
