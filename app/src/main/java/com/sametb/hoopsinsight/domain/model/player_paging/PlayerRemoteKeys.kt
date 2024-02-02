@@ -13,8 +13,8 @@ import com.sametb.hoopsinsight.util.constants.RoomConstants
 */
 
 // Remote keys table for pagination
-@Entity(tableName = RoomConstants.PLAYER_REMOTE_KEY_DB_TABLE)
-data class PlayerRemoteKey(
+@Entity(tableName = RoomConstants.PLAYER_REMOTE_KEYS_DB_TABLE)
+data class PlayerRemoteKeys(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
 

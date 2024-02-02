@@ -2,6 +2,7 @@ package com.sametb.hoopsinsight.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
 import com.sametb.hoopsinsight.util.constants.RoomConstants
 import dagger.Module
@@ -27,11 +28,13 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context    // dagger hilt will provide context
-    ) =
-        Room.databaseBuilder(
+    ) : RoomDatabase {
+         return  Room.databaseBuilder(
             context,
             PlayerDatabase::class.java,
             RoomConstants.PLAYER_DATABASE
         ).build()
+    }
+
 
 }

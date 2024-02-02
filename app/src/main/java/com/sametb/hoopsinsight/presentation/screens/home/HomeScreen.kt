@@ -19,10 +19,9 @@ import com.sametb.hoopsinsight.util.functions.isProbablyRunningOnEmulator
 
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
+//    navController: NavHostController,
 ) {
     HomeScreenContent()
-
 }
 
 

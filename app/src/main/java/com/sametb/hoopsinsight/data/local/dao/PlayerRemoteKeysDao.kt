@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKey
+import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKeys
 
 
 /*
@@ -15,14 +15,14 @@ import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKey
 */
 
 @Dao
-interface PlayerRemoteKeyDao {
+interface  PlayerRemoteKeysDao {
 
-    @Query("SELECT * FROM player_remote_key_table WHERE id = :id")
-    suspend fun getRemoteKey(id: Int): PlayerRemoteKey?
+    @Query("SELECT * FROM player_remote_keys_table WHERE id = :id")
+    suspend fun getRemoteKey(id: Int): PlayerRemoteKeys?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAllRemoteKeys(remoteKeys: List<PlayerRemoteKey>)
+    suspend fun addAllRemoteKeys(remoteKeys: List<PlayerRemoteKeys>)
 
-    @Query("DELETE FROM player_remote_key_table")
+    @Query("DELETE FROM player_remote_keys_table")
     suspend fun deleteAllRemoteKeys()
 }

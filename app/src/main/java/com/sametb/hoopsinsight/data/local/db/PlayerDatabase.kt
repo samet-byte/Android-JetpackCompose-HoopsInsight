@@ -9,8 +9,8 @@ import com.sametb.hoopsinsight.data.local.converters.InfoConverter
 import com.sametb.hoopsinsight.data.local.converters.IntConverter
 import com.sametb.hoopsinsight.data.local.converters.StatsConverter
 import com.sametb.hoopsinsight.data.local.dao.PlayerDao
-import com.sametb.hoopsinsight.data.local.dao.PlayerRemoteKeyDao
-import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKey
+import com.sametb.hoopsinsight.data.local.dao.PlayerRemoteKeysDao
+import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKeys
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
 
 
@@ -21,7 +21,7 @@ import com.sametb.hoopsinsight.domain.model.player_paging.Player
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
-@Database(entities = [Player::class, PlayerRemoteKey::class], version = 1, exportSchema = false)
+@Database(entities = [Player::class, PlayerRemoteKeys::class], version = 1, exportSchema = false)
 @TypeConverters(
     InfoConverter::class,
     StatsConverter::class,
@@ -33,5 +33,5 @@ abstract class PlayerDatabase: RoomDatabase() {
 
     abstract fun playerDao(): PlayerDao
 
-    abstract fun remoteKeyDao(): PlayerRemoteKeyDao
+    abstract fun remoteKeysDao(): PlayerRemoteKeysDao
 }

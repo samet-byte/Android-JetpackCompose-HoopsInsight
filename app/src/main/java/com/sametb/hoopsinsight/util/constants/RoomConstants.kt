@@ -10,6 +10,6 @@ package com.sametb.hoopsinsight.util.constants
 
 object RoomConstants {
     const val ROOM_DB_PLAYER_TABLE = "player_table"
-    const val PLAYER_REMOTE_KEY_DB_TABLE = "player_remote_key_table"
+    const val PLAYER_REMOTE_KEYS_DB_TABLE = "player_remote_keys_table"
     const val PLAYER_DATABASE = "hoops_insight_db"
 }
