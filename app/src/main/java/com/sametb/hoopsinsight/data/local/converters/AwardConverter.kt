@@ -3,11 +3,7 @@ package com.sametb.hoopsinsight.data.local.converters
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.sametb.hoopsinsight.domain.model.player.sub.Award
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Award
 
 
 /*

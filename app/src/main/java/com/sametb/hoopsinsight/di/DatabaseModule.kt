@@ -2,7 +2,7 @@ package com.sametb.hoopsinsight.di
 
 import android.content.Context
 import androidx.room.Room
-import com.sametb.hoopsinsight.data.local.PlayerDatabase
+import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
 import com.sametb.hoopsinsight.util.constants.RoomConstants
 import dagger.Module
 import dagger.Provides

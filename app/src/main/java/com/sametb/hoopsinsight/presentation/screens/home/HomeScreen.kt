@@ -2,10 +2,12 @@ package com.sametb.hoopsinsight.presentation.screens.home
 
 import android.content.res.Configuration
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.sametb.hoopsinsight.ui.theme.customBackgroundColor
+import com.sametb.hoopsinsight.util.functions.isProbablyRunningOnEmulator
 
 
 /*
@@ -24,14 +26,16 @@ fun HomeScreen(
 }
 
 
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun HomeScreenContent(
 ) {
     Scaffold(
         topBar = {HomeTopAppBar()},
-        backgroundColor = customBackgroundColor(darkThemeBgColorAlpha = .95f)
+        backgroundColor = customBackgroundColor(darkThemeBgColorAlpha = .97f)
 
-    ){}
+    ){
+        Text(text = "$isProbablyRunningOnEmulator")
+    }
 }

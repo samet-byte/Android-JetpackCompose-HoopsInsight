@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.domain.model.player.sub
+package com.sametb.hoopsinsight.domain.model.player_paging.sub
 
 import kotlinx.serialization.Serializable
 

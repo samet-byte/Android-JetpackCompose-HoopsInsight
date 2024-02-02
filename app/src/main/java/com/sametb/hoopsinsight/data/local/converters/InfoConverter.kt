@@ -1,7 +1,7 @@
 package com.sametb.hoopsinsight.data.local.converters
 
 import androidx.room.TypeConverter
-import com.sametb.hoopsinsight.domain.model.player.sub.Info
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Info
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

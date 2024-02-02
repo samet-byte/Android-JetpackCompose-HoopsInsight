@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.data.local
+package com.sametb.hoopsinsight.data.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -10,8 +10,8 @@ import com.sametb.hoopsinsight.data.local.converters.IntConverter
 import com.sametb.hoopsinsight.data.local.converters.StatsConverter
 import com.sametb.hoopsinsight.data.local.dao.PlayerDao
 import com.sametb.hoopsinsight.data.local.dao.PlayerRemoteKeyDao
-import com.sametb.hoopsinsight.domain.model.PlayerRemoteKey
-import com.sametb.hoopsinsight.domain.model.player.Player
+import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKey
+import com.sametb.hoopsinsight.domain.model.player_paging.Player
 
 
 /*

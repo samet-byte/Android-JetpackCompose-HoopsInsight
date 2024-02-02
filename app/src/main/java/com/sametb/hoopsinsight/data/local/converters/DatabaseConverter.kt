@@ -1,8 +1,6 @@
 package com.sametb.hoopsinsight.data.local.converters
 
 import androidx.room.TypeConverter
-import com.google.gson.Gson
-import com.sametb.hoopsinsight.domain.model.player.Player
 
 
 /*

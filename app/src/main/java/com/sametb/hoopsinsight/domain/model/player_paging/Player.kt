@@ -1,11 +1,12 @@
-package com.sametb.hoopsinsight.domain.model.player
+package com.sametb.hoopsinsight.domain.model.player_paging
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sametb.hoopsinsight.domain.model.player.sub.Award
-import com.sametb.hoopsinsight.domain.model.player.sub.Info
-import com.sametb.hoopsinsight.domain.model.player.sub.Stats
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Award
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Info
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Stats
 import com.sametb.hoopsinsight.util.constants.RoomConstants
+import kotlinx.serialization.Serializable
 
 
 /*
@@ -15,7 +16,7 @@ import com.sametb.hoopsinsight.util.constants.RoomConstants
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
-
+@Serializable
 @Entity(tableName = RoomConstants.ROOM_DB_PLAYER_TABLE)
 data class Player(
     @PrimaryKey(autoGenerate = false)

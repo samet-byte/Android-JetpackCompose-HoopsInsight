@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.domain.model
+package com.sametb.hoopsinsight.domain.model.player_paging
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

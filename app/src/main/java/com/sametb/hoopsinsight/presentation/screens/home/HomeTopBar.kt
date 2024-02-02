@@ -50,7 +50,7 @@ fun HomeTopAppBar(
             }
         },
         modifier = Modifier
-            .shadow(ambientColor = Color.White, elevation = 20.dp)
+            .shadow(ambientColor = Color.LightGray, elevation = 10.dp)
         ,
 
     )
