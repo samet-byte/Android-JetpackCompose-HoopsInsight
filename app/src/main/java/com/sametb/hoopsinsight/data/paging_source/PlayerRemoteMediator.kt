@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.data.local.paging_source
+package com.sametb.hoopsinsight.data.paging_source
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
-import com.sametb.hoopsinsight.data.local.remote.NBAApi
+import com.sametb.hoopsinsight.data.remote.NBAApi
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
 import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKeys
 import javax.inject.Inject
@@ -20,7 +20,7 @@ import javax.inject.Inject
 */
 
 @OptIn(ExperimentalPagingApi::class)
-class HeroRemoteMediator
+class PlayerRemoteMediator
     @Inject constructor(
         private val nbaApi: NBAApi,
         private val nbaDatabase: PlayerDatabase

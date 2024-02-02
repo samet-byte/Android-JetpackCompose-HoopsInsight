@@ -1,6 +1,6 @@
-package com.sametb.hoopsinsight.use_cases.onboarding.read
+package com.sametb.hoopsinsight.domain.use_cases.onboarding.read
 
-import com.sametb.hoopsinsight.repo.Repository
+import com.sametb.hoopsinsight.data.repo.Repository
 import kotlinx.coroutines.flow.Flow
 
 

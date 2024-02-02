@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.repo
+package com.sametb.hoopsinsight.domain.repo
 
 import kotlinx.coroutines.flow.Flow
 

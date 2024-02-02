@@ -1,7 +1,7 @@
-package com.sametb.hoopsinsight.use_cases
+package com.sametb.hoopsinsight.domain.use_cases
 
-import com.sametb.hoopsinsight.use_cases.onboarding.read.ReadOnBoardingUseCase
-import com.sametb.hoopsinsight.use_cases.onboarding.save.SaveOnBoardingUseCase
+import com.sametb.hoopsinsight.domain.use_cases.onboarding.read.ReadOnBoardingUseCase
+import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUseCase
 
 
 /*

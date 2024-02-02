@@ -2,7 +2,7 @@ package com.sametb.hoopsinsight.presentation.screens.welcome
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sametb.hoopsinsight.use_cases.UseCases
+import com.sametb.hoopsinsight.domain.use_cases.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

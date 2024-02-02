@@ -1,7 +1,10 @@
 package com.sametb.hoopsinsight.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.sametb.hoopsinsight.data.local.remote.NBAApi
+import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
+import com.sametb.hoopsinsight.data.remote.NBAApi
+import com.sametb.hoopsinsight.data.repo.RemoteDataSourceImpl
+import com.sametb.hoopsinsight.domain.repo.IRemoteDataSource
 import com.sametb.hoopsinsight.util.constants.ApiConstants.CONTENT_TYPE
 import com.sametb.hoopsinsight.util.constants.decideLocalBaseUrl
 import dagger.Module
@@ -57,4 +60,15 @@ object NetworkModule {
     @Singleton
     fun provideNBAApi(retrofit: Retrofit): NBAApi =
         retrofit.create(NBAApi::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(
+        nbaApi: NBAApi,
+        playerDatabase: PlayerDatabase
+    ) : IRemoteDataSource =
+        RemoteDataSourceImpl(nbaApi, playerDatabase)
+
+    }
 }

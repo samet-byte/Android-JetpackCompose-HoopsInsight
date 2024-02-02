@@ -3,7 +3,7 @@ package com.sametb.hoopsinsight.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.sametb.hoopsinsight.util.constants.ContentConstants
+import com.sametb.hoopsinsight.util.constants.ViewConstants
 
 
 /*
@@ -65,10 +65,10 @@ fun activeIndicatorAndButtonColor(darkTheme: Boolean = false) =
 
 @Composable
 fun appBarBgContentColor(
-    where: String = ContentConstants.BACKGROUND,
+    where: String = ViewConstants.BACKGROUND,
     darkTheme: Boolean = isSystemInDarkTheme(),
 ) =
     when(where) {
-        ContentConstants.BACKGROUND -> if (darkTheme) Color.Black else Color.Blue
+        ViewConstants.BACKGROUND -> if (darkTheme) Color.Black else Color.Blue
         else -> if (darkTheme) Color.LightGray else Color.White
 }

@@ -1,6 +1,10 @@
-package com.sametb.hoopsinsight.repo
+package com.sametb.hoopsinsight.data.repo
 
 
+import androidx.paging.PagingData
+import com.sametb.hoopsinsight.domain.model.player_paging.Player
+import com.sametb.hoopsinsight.domain.repo.IDataStoreOperations
+import com.sametb.hoopsinsight.domain.repo.IRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -13,7 +17,8 @@ import javax.inject.Inject
 */
 
 class Repository @Inject constructor(
-    private val dataStore: IDataStoreOperations
+    private val remote: IRemoteDataSource,
+    private val dataStore: IDataStoreOperations,
 ) {
     suspend fun saveOnBoardingState(completed: Boolean) {
         dataStore.saveOnBoardingState(completed = completed)
@@ -21,6 +26,10 @@ class Repository @Inject constructor(
 
     fun readOnBoardingState(): Flow<Boolean> {
         return dataStore.readOnBoardingState()
+    }
+
+    fun getAllPlayers(): Flow<PagingData<Player>> {
+        return remote.getAllPlayers()
     }
 
 

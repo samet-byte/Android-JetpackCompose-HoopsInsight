@@ -1,12 +1,12 @@
 package com.sametb.hoopsinsight.di
 
 import android.content.Context
-import com.sametb.hoopsinsight.data.local.preferences.DataOperationsImpl
-import com.sametb.hoopsinsight.repo.IDataStoreOperations
-import com.sametb.hoopsinsight.repo.Repository
-import com.sametb.hoopsinsight.use_cases.UseCases
-import com.sametb.hoopsinsight.use_cases.onboarding.read.ReadOnBoardingUseCase
-import com.sametb.hoopsinsight.use_cases.onboarding.save.SaveOnBoardingUseCase
+import com.sametb.hoopsinsight.data.repo.preferences.DataOperationsImpl
+import com.sametb.hoopsinsight.domain.repo.IDataStoreOperations
+import com.sametb.hoopsinsight.data.repo.Repository
+import com.sametb.hoopsinsight.domain.use_cases.UseCases
+import com.sametb.hoopsinsight.domain.use_cases.onboarding.read.ReadOnBoardingUseCase
+import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

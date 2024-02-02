@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.data.local.remote
+package com.sametb.hoopsinsight.data.remote
 
 import com.sametb.hoopsinsight.domain.model.ApiResponse
 import com.sametb.hoopsinsight.util.constants.ApiConstants.API_BASE

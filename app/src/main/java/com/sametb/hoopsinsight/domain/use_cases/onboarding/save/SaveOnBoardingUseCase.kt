@@ -1,6 +1,6 @@
-package com.sametb.hoopsinsight.use_cases.onboarding.save
+package com.sametb.hoopsinsight.domain.use_cases.onboarding.save
 
-import com.sametb.hoopsinsight.repo.Repository
+import com.sametb.hoopsinsight.data.repo.Repository
 
 
 /*

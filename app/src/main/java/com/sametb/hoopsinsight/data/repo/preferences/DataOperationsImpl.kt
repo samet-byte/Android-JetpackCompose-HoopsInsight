@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.data.local.preferences
+package com.sametb.hoopsinsight.data.repo.preferences
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.sametb.hoopsinsight.repo.IDataStoreOperations
+import com.sametb.hoopsinsight.domain.repo.IDataStoreOperations
 import com.sametb.hoopsinsight.util.constants.DataStoreConstants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
