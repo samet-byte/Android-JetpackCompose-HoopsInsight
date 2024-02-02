@@ -1,5 +1,8 @@
 package com.sametb.hoopsinsight.domain.model.player.sub
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Stats(
     val AST: Double? = null,
     val PIE: Double? = null,

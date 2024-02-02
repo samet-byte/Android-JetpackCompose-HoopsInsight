@@ -4,8 +4,10 @@ plugins {
 
     id("com.google.dagger.hilt.android")
 
-    id("com.google.devtools.ksp")
+//    id("com.google.devtools.ksp")
     id("kotlin-kapt")
+
+    kotlin("plugin.serialization") version "1.4.21"
 }
 
 android {
@@ -77,9 +79,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
 
     // Room components
-    implementation( "androidx.room:room-runtime:2.3.0")
-    kapt ("androidx.room:room-compiler:2.3.0")
-    implementation ("androidx.room:room-ktx:2.3.0")
+    implementation( "androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-paging:2.6.1")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

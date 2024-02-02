@@ -1,5 +1,8 @@
 package com.sametb.hoopsinsight.domain.model.player.sub
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Info(
     val BIRTHDATE: String? = null,
     val COUNTRY: String? = null,

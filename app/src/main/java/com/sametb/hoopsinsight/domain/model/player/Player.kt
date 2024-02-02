@@ -15,6 +15,7 @@ import com.sametb.hoopsinsight.util.constants.RoomConstants
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
+
 @Entity(tableName = RoomConstants.ROOM_DB_PLAYER_TABLE)
 data class Player(
     @PrimaryKey(autoGenerate = false)

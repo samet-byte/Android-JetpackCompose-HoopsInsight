@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.data.local
+package com.sametb.hoopsinsight.data.local.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
@@ -33,14 +33,14 @@ class DatabaseConverter {
     }
 
 
-    @TypeConverter
-    fun playerToString(player: Player?): String? {
-        return player?.let { Gson().toJson(it) }
-    }
-
-    @TypeConverter
-    fun stringToPlayer(data: String?): Player? {
-        return data?.let { Gson().fromJson(it, Player::class.java) }
-    }
+//    @TypeConverter
+//    fun playerToString(player: Player?): String? {
+//        return player?.let { Gson().toJson(it) }
+//    }
+//
+//    @TypeConverter
+//    fun stringToPlayer(data: String?): Player? {
+//        return data?.let { Gson().fromJson(it, Player::class.java) }
+//    }
 
 }
