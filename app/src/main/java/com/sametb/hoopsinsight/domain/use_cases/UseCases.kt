@@ -2,6 +2,7 @@ package com.sametb.hoopsinsight.domain.use_cases
 
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.read.ReadOnBoardingUseCase
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUseCase
+import com.sametb.hoopsinsight.domain.use_cases.players.get_all.GetAllPlayersUseCase
 
 
 /*
@@ -13,5 +14,6 @@ import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUs
 
 data class UseCases(
     val saveOnBoardingUseCase: SaveOnBoardingUseCase,
-    val readOnBoardingUseCase: ReadOnBoardingUseCase
+    val readOnBoardingUseCase: ReadOnBoardingUseCase,
+    val getAllPlayersUseCase: GetAllPlayersUseCase,
 )

@@ -28,7 +28,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context    // dagger hilt will provide context
-    ) : RoomDatabase {
+    ) : PlayerDatabase {
          return  Room.databaseBuilder(
             context,
             PlayerDatabase::class.java,

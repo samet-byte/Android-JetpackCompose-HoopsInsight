@@ -70,5 +70,4 @@ object NetworkModule {
     ) : IRemoteDataSource =
         RemoteDataSourceImpl(nbaApi, playerDatabase)
 
-    }
 }

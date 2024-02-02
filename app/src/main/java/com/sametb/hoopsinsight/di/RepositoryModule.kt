@@ -7,6 +7,7 @@ import com.sametb.hoopsinsight.data.repo.Repository
 import com.sametb.hoopsinsight.domain.use_cases.UseCases
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.read.ReadOnBoardingUseCase
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUseCase
+import com.sametb.hoopsinsight.domain.use_cases.players.get_all.GetAllPlayersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +43,8 @@ object RepositoryModule {
     ): UseCases {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository), // try to convert it to extension or infix function.
-            readOnBoardingUseCase = ReadOnBoardingUseCase(repository)
+            readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
+            getAllPlayersUseCase = GetAllPlayersUseCase(repository),
         )
     }
 
