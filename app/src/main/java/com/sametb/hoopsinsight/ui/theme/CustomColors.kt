@@ -35,14 +35,12 @@ fun welcomeScreenBackgroundColor(darkTheme: Boolean = false) =
 @Composable
 fun textColor(
     darkTheme: Boolean = false,
-    alpha: Float = 1f
+    alpha: Float = 1f,
+    darkThemeColor: Color = Color.LightGray,
+    lightThemeColor: Color = Color.DarkGray
 ) = when {
-    darkTheme -> Color.
-                    LightGray
-                    .copy(alpha = alpha)
-    else -> Color.
-                    DarkGray
-                    .copy(alpha = alpha)
+    darkTheme -> darkThemeColor.copy(alpha = alpha)
+    else -> lightThemeColor.copy(alpha = alpha)
 }
 
 @Composable
@@ -52,3 +50,4 @@ fun activeIndicatorAndButtonColor(darkTheme: Boolean = false) =
                         White
         else -> STATUS_BAR_COLOR_LIGHT
     }
+

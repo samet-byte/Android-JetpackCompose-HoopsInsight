@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -56,17 +57,12 @@ val pages = listOf(
     OnBoardingPage.ThirdPage
 )
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun WelcomeScreen(
-    navController: NavHostController
-) {
-    WelcomeScreenContent(navController = navController)
-}
-
-@Composable
-fun WelcomeScreenContent(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    navController: NavHostController
+    navController: NavHostController,
+    welcomeViewModel: WelcomeViewModel = hiltViewModel() // from hilt nav compose
 ) {
 
     val pagerState = rememberPagerState() // default page is 0
@@ -99,13 +95,23 @@ fun WelcomeScreenContent(
                 .align(Alignment.CenterHorizontally)
                 .weight(1f)
         )
-        FinishButton(pagerState = pagerState) {
+        FinishButton(
+            modifier = Modifier
+                .weight(1f)
+            ,
+            pagerState = pagerState,
+            text = "Let's Hoop!"
+        ) {
+            navController.popBackStack() // prevent reshow when go back attempted
             navController.navigate(Screen.Home.route)
+            welcomeViewModel.saveOnBoardingState(completed = true)
         }
 
     }
 
 }
+
+
 
 @Composable
 fun PagerScreen(
@@ -153,13 +159,16 @@ fun PagerScreen(
     }
 }
 
+@ExperimentalPagerApi
 @Composable
 fun FinishButton(
+    modifier: Modifier,
     pagerState: PagerState,
+    text: String = "Finish",
     onClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 2*16.dp)
         ,
         horizontalArrangement = Arrangement.Center,
@@ -177,15 +186,17 @@ fun FinishButton(
                 )
             ) {
                 Text(
-                    text = "Finish",
-                    color = Color.White,
+                    text = text,
+                    color = textColor(
+                        darkTheme = isSystemInDarkTheme(),
+                        darkThemeColor = Color.Black,
+                        lightThemeColor = Color.White
+                    ),
                     fontFamily = basketballFontFamily,
                     fontWeight = FontWeight.Bold
                 )
             }
 
         }
-
-
     }
 }

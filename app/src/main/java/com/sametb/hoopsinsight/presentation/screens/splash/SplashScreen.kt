@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,9 +19,9 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.sametb.hoopsinsight.R
 import com.sametb.hoopsinsight.nav.Screen
@@ -34,8 +36,11 @@ import com.sametb.hoopsinsight.nav.Screen
 
 @Composable
 fun SplashScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    splashViewModel: SplashViewModel = hiltViewModel()
 ) {
+    // observing the value from view model
+    val onBoardingCompleted by splashViewModel.onBoardingCompleted.collectAsState()
 
     val rotateAnimation = remember { Animatable(0f) }
 
@@ -49,7 +54,9 @@ fun SplashScreen(
                 delayMillis = 20
             )
         )
-        navController.navigate(Screen.Welcome.route)
+        navController.popBackStack()
+        if (onBoardingCompleted)    navController.navigate(Screen.Home.route)
+        else                        navController.navigate(Screen.Welcome.route)
 
     }
     Splash(rotateAnimation.value)
@@ -84,7 +91,7 @@ fun SplashScreenContent(
             painter = painterResource(id = icon),
             contentDescription = stringResource(R.string.app_logo),
             modifier = Modifier
-                .height(1.5*100.dp)
+                .height(1.5 * 100.dp)
                 .rotate(degrees = rotateDegrees)
             ,
         )
