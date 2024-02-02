@@ -135,5 +135,9 @@ dependencies {
     testImplementation( "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
 
 
+    // Colorful Logger
     implementation ("com.github.samet-byte:SamCustomStuffLibrary:1.3")
+
+    // Icons material3
+
 }

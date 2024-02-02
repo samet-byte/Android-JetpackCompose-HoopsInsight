@@ -1,7 +1,9 @@
 package com.sametb.hoopsinsight.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.sametb.hoopsinsight.util.constants.ContentConstants
 
 
 /*
@@ -19,6 +21,8 @@ val BOTTOM_BG_COLOR_LIGHT = Color.Red
 val STATUS_BAR_COLOR_DARK = Color.Black
 val BOTTOM_BG_COLOR_DARK = Color.DarkGray
 
+val BEIGE = Color(0xFFFFECD6)
+
 fun statusBarColor(darkTheme: Boolean = false) =
     when {
         darkTheme -> STATUS_BAR_COLOR_DARK
@@ -26,10 +30,16 @@ fun statusBarColor(darkTheme: Boolean = false) =
     }
 
 @Composable
-fun welcomeScreenBackgroundColor(darkTheme: Boolean = false) =
+fun customBackgroundColor(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkThemeBgColor: Color = STATUS_BAR_COLOR_DARK,
+    darkThemeBgColorAlpha: Float = 1f,
+    lightThemeBgColor: Color = Color.White,
+    lightThemeBgColorAlpha: Float = 1f,
+) =
     when {
-        darkTheme -> STATUS_BAR_COLOR_DARK
-        else -> Color.White
+        darkTheme -> darkThemeBgColor.copy(alpha = darkThemeBgColorAlpha)
+        else -> lightThemeBgColor.copy(alpha = lightThemeBgColorAlpha)
     }
 
 @Composable
@@ -51,3 +61,14 @@ fun activeIndicatorAndButtonColor(darkTheme: Boolean = false) =
         else -> STATUS_BAR_COLOR_LIGHT
     }
 
+
+
+@Composable
+fun appBarBgContentColor(
+    where: String = ContentConstants.BACKGROUND,
+    darkTheme: Boolean = isSystemInDarkTheme(),
+) =
+    when(where) {
+        ContentConstants.BACKGROUND -> if (darkTheme) Color.Black else Color.Blue
+        else -> if (darkTheme) Color.LightGray else Color.White
+}

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Hoops Insight</string>
     <string name="app_logo">NBA Logo</string>
+    <string name="search">Search</string>
+    <string name="search_icon">Search Icon</string>
 </resources>

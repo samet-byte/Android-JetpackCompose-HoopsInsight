@@ -38,7 +38,7 @@ import com.sametb.hoopsinsight.nav.Screen
 import com.sametb.hoopsinsight.ui.theme.activeIndicatorAndButtonColor
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.textColor
-import com.sametb.hoopsinsight.ui.theme.welcomeScreenBackgroundColor
+import com.sametb.hoopsinsight.ui.theme.customBackgroundColor
 import com.sametb.hoopsinsight.util.constants.PAGING_INDICATOR_SPACING
 import com.sametb.hoopsinsight.util.constants.PAGING_INDICATOR_WIDTH
 import com.sametb.hoopsinsight.util.constants.WELCOME_SCREEN_PAGE_COUNT
@@ -70,7 +70,7 @@ fun WelcomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = welcomeScreenBackgroundColor(darkTheme)),
+            .background(color = customBackgroundColor(darkTheme)),
     ) {
         // cmd+p to see the all parameters
         HorizontalPager(
@@ -121,7 +121,7 @@ fun PagerScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = welcomeScreenBackgroundColor(darkTheme)),
+            .background(color = customBackgroundColor(darkTheme)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
