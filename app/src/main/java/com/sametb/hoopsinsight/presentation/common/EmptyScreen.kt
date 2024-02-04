@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +32,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.sametb.hoopsinsight.R
+import com.sametb.hoopsinsight.domain.model.player_paging.Player
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.emptyScreenContentColor
 import com.sametb.hoopsinsight.util.constants.EmptyScreenConstants
@@ -59,7 +65,8 @@ val CHECK_ERROR = LoadState.Error(
 //)
 @Composable
 fun EmptyScreen( // default find player page, if error passed then show error message
-    error: LoadState.Error? = null
+    error: LoadState.Error? = null,
+    players: LazyPagingItems<Player>? = null,
 ) {
 
     var message by remember { mutableStateOf(EmptyScreenConstants.DEFAULT_SEARCH_PAGE_STRING) }
@@ -98,31 +105,68 @@ fun EmptyScreen( // default find player page, if error passed then show error me
     )
 
 
-
     EmptyScreenContent(
+        players,
+        error,
         icon,
         message,
-//        alphaAnimation
         alphaValueFadeInOut
     )
+
 }
 
 @Composable
 private fun EmptyScreenContent(
+    players: LazyPagingItems<Player>?,
+    error: LoadState.Error?,
+    icon: Int,
+    message: String,
+    alphaValue: Float
+) {
+
+    var isRefreshing by remember { mutableStateOf(false) }
+
+
+    SwipeRefresh(
+        swipeEnabled = error != null,
+        state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+        onRefresh = {
+            isRefreshing = true
+            players?.refresh()
+            isRefreshing = false
+        }
+    ) {
+
+        EmptyScreenContentOnAction(
+            icon,
+            message,
+            //        alphaAnimation
+            alphaValue
+        )
+    }
+}
+
+@Composable
+private fun EmptyScreenContentOnAction(
     icon: Int,
     message: String,
     alphaAnimation: Float,
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
+//    Box(
+//        modifier = Modifier.fillMaxSize(),
+//        contentAlignment = Alignment.Center
+//    ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()) // to make it scrollable -> default is not scrollable
+
         ) {
             Image(
                 painter = painterResource(id = icon),
-                contentDescription = null,
+                contentDescription = "Empty Screen Icon",
                 modifier = Modifier
                     .size(100.dp)
                     .alpha(alpha = alphaAnimation)
@@ -142,7 +186,7 @@ private fun EmptyScreenContent(
                 minLines = 2
             )
         }
-    }
+//    }
 }
 
 fun parseErrorMessage(error: LoadState.Error): String {

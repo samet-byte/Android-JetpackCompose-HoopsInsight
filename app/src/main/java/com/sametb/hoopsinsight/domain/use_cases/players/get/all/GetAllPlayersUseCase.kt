@@ -1,4 +1,4 @@
-package com.sametb.hoopsinsight.domain.use_cases.players.get_all
+package com.sametb.hoopsinsight.domain.use_cases.players.get.all
 
 import androidx.paging.PagingData
 import com.sametb.hoopsinsight.data.repo.Repository

@@ -1,13 +1,17 @@
 package com.sametb.hoopsinsight.di
 
 import android.content.Context
+import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
+import com.sametb.hoopsinsight.data.repo.DataSourceImpl
 import com.sametb.hoopsinsight.data.repo.preferences.DataOperationsImpl
 import com.sametb.hoopsinsight.domain.repo.IDataStoreOperations
 import com.sametb.hoopsinsight.data.repo.Repository
+import com.sametb.hoopsinsight.domain.repo.ILocalDataSource
 import com.sametb.hoopsinsight.domain.use_cases.UseCases
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.read.ReadOnBoardingUseCase
 import com.sametb.hoopsinsight.domain.use_cases.onboarding.save.SaveOnBoardingUseCase
-import com.sametb.hoopsinsight.domain.use_cases.players.get_all.GetAllPlayersUseCase
+import com.sametb.hoopsinsight.domain.use_cases.players.get.all.GetAllPlayersUseCase
+import com.sametb.hoopsinsight.domain.use_cases.players.get.selected.GetSelectedPlayerUseCase
 import com.sametb.hoopsinsight.domain.use_cases.search.SearchPlayersUseCase
 import dagger.Module
 import dagger.Provides
@@ -46,8 +50,15 @@ object RepositoryModule {
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository), // try to convert it to extension or infix function.
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
             getAllPlayersUseCase = GetAllPlayersUseCase(repository),
-            searchPlayersUseCase = SearchPlayersUseCase(repository)
+            searchPlayersUseCase = SearchPlayersUseCase(repository),
+            getSelectedPlayerUseCase = GetSelectedPlayerUseCase(repository),
         )
     }
 
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(
+        database: PlayerDatabase
+    ) : ILocalDataSource
+    = DataSourceImpl(playerDatabase = database)
 }

@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.sametb.hoopsinsight.presentation.screens.details.DetailsScreen
 import com.sametb.hoopsinsight.presentation.screens.home.HomeScreen
 import com.sametb.hoopsinsight.presentation.screens.search.SearchScreen
 import com.sametb.hoopsinsight.presentation.screens.splash.SplashScreen
@@ -43,7 +44,7 @@ fun SetupNavGraph(navController: NavHostController) {
                 }
             )
         ) {
-
+            DetailsScreen(navController = navController)
         }
         composable(route = Screen.Search.route) {
             SearchScreen(navController = navController)

@@ -1,9 +1,13 @@
 package com.sametb.hoopsinsight.presentation.screens.search
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -53,6 +57,14 @@ fun SearchScreenContent(searchViewModel: SearchViewModel, navController: NavHost
             )
         }
     ) {
-        ListContent(players = searchResults, navController = navController)
+        Box(
+            Modifier
+                .padding(it)
+            ,
+            contentAlignment = androidx.compose.ui.Alignment.Center,
+        ) {
+            ListContent(players = searchResults, navController = navController)
+        }
+
     }
 }

@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.sametb.hoopsinsight.R
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.appBarBgAndContentColor
+import com.sametb.hoopsinsight.util.constants.AppConstants
 import com.sametb.hoopsinsight.util.constants.ViewConstants
 
 
@@ -37,7 +38,7 @@ fun HomeTopAppBar(
     TopAppBar(
         title = {
             Text(
-                text = "Explore",
+                text = "${AppConstants.APP_NAME} (NBA)",
                 color = appBarBgAndContentColor(ViewConstants.CONTENT),
                 fontFamily = basketballFontFamily
             )
@@ -46,14 +47,16 @@ fun HomeTopAppBar(
         contentColor = appBarBgAndContentColor(ViewConstants.CONTENT),
         actions = {
             IconButton(onClick = onSearchClicked) {
-                Icon(imageVector = Icons.Default.Search, contentDescription = stringResource(R.string.search_icon))
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = stringResource(R.string.search_icon)
+                )
             }
         },
         modifier = Modifier
-            .shadow(ambientColor = Color.LightGray, elevation = 10.dp)
-        ,
+            .shadow(ambientColor = Color.LightGray, elevation = 10.dp),
 
-    )
+        )
 }
 
 
