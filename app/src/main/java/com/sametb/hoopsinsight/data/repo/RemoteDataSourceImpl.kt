@@ -6,11 +6,13 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
 import com.sametb.hoopsinsight.data.paging_source.PlayerRemoteMediator
+import com.sametb.hoopsinsight.data.paging_source.SearchPlayersSource
 import com.sametb.hoopsinsight.data.remote.NBAApi
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
 import com.sametb.hoopsinsight.domain.repo.IRemoteDataSource
 import com.sametb.hoopsinsight.util.constants.RemoteDataSourceConstants.ITEMS_PER_PAGE
 import kotlinx.coroutines.flow.Flow
+import retrofit2.http.Query
 
 
 /*
@@ -37,7 +39,14 @@ class RemoteDataSourceImpl(
         ).flow
     }
 
-    override fun searchPlayers(name: String): Flow<PagingData<Player>> {
-        return null!!
+    @OptIn(ExperimentalPagingApi::class)
+    override fun searchPlayers(query: String): Flow<PagingData<Player>> {
+        return Pager(
+            config = PagingConfig(pageSize = ITEMS_PER_PAGE),
+            remoteMediator = PlayerRemoteMediator(nbaApi, nbaDatabase),
+            pagingSourceFactory = {
+                SearchPlayersSource(nbaApi, query)
+            }
+        ).flow
     }
 }

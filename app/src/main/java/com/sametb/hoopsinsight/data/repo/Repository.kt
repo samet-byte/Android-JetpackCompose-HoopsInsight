@@ -32,5 +32,8 @@ class Repository @Inject constructor(
         return remote.getAllPlayers()
     }
 
+    fun searchPlayers(query: String): Flow<PagingData<Player>> {
+        return remote.searchPlayers(query = query)
+    }
 
 }

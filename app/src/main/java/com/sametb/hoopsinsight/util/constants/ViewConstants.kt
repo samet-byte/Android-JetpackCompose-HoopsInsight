@@ -18,6 +18,6 @@ object ViewConstants {
 
 
 fun randomRatingWithPoint5 (): Double {
-//    val ratingArray = arrayOf(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0)
-    return 2.5
+    val ratingArray = arrayOf(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0)
+    return ratingArray.random()
 }

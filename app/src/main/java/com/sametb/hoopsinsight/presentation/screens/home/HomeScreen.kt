@@ -15,6 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
+import com.sametb.hoopsinsight.nav.Screen
 import com.sametb.hoopsinsight.presentation.common.ListContent
 import com.sametb.hoopsinsight.ui.theme.customBackgroundColor
 
@@ -49,7 +50,9 @@ fun HomeScreenContent(
     navController: NavHostController,
 ) {
     Scaffold(
-        topBar = {HomeTopAppBar()},
+        topBar = {HomeTopAppBar(
+            onSearchClicked = {navController.navigate(Screen.Search.route)}
+        )},
         backgroundColor = customBackgroundColor(darkThemeBgColorAlpha = .97f),
         content = { paddingValues -> Box(modifier = Modifier.padding(paddingValues)){
             ListContent(players = players, navController = navController)

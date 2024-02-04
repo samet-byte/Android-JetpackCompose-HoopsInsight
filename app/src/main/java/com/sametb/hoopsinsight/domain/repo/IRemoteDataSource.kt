@@ -16,5 +16,5 @@ interface IRemoteDataSource {
 
     fun getAllPlayers(): Flow<PagingData<Player>>
 
-    fun searchPlayers(name: String): Flow<PagingData<Player>>
+    fun searchPlayers(query: String): Flow<PagingData<Player>>
 }

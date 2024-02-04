@@ -102,7 +102,7 @@ fun SearchWidget(
                     Icon(
                         imageVector = Icons.Default.Close,
                         contentDescription = stringResource(R.string.close_icon),
-                        tint = appBarBgAndContentColor(where = ViewConstants.CONTENT)
+                        tint = appBarBgAndContentColor(where = ViewConstants.CONTENT),
                     )
                 }
             },

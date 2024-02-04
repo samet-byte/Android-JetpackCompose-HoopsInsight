@@ -1,11 +1,9 @@
 package com.sametb.hoopsinsight.presentation.common
 
-import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
@@ -16,11 +14,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -32,13 +28,12 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import com.sametb.hoopsinsight.R
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.emptyScreenContentColor
-import kotlinx.coroutines.delay
+import com.sametb.hoopsinsight.util.constants.EmptyScreenConstants
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
@@ -50,7 +45,7 @@ import java.net.SocketTimeoutException
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
-val DEFAULT_ERROR = LoadState.Error(
+val CHECK_ERROR = LoadState.Error(
 //        ConnectException()
         SocketTimeoutException()
 //        Exception()
@@ -63,13 +58,19 @@ val DEFAULT_ERROR = LoadState.Error(
 //    uiMode = Configuration.UI_MODE_NIGHT_YES
 //)
 @Composable
-fun EmptyScreen(
-    error: LoadState.Error = DEFAULT_ERROR
+fun EmptyScreen( // default find player page, if error passed then show error message
+    error: LoadState.Error? = null
 ) {
-    val message by remember { mutableStateOf(parseErrorMessage(error)) }
-    val icon by remember { mutableIntStateOf(R.drawable.ic_network_error) }
 
+    var message by remember { mutableStateOf(EmptyScreenConstants.DEFAULT_SEARCH_PAGE_STRING) }
+    var icon by remember { mutableIntStateOf(EmptyScreenConstants.DEFAULT_SEARCH_PAGE_ICON) }
 
+    if (error != null) {
+        message = parseErrorMessage(error = error)
+        icon = R.drawable.ic_network_error
+    }
+
+    /*
     // __ Animation Just Fade In __
     var startAnimation by remember { mutableStateOf(false) }
     val alphaAnimation by animateFloatAsState(
@@ -82,6 +83,7 @@ fun EmptyScreen(
     LaunchedEffect(key1 = true) {
         startAnimation = true
     }
+    */
 
 
     // __ Animation Fade In and Out __
