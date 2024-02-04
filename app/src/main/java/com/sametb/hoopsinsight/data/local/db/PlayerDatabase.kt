@@ -21,7 +21,14 @@ import com.sametb.hoopsinsight.domain.model.player_paging.Player
 * Copyright (c) 2024 UNITED WORLD. All rights reserved.
 */
 
-@Database(entities = [Player::class, PlayerRemoteKeys::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        Player::class,
+        PlayerRemoteKeys::class
+    ],
+    version = 2,
+    exportSchema = false
+)
 @TypeConverters(
     InfoConverter::class,
     StatsConverter::class,
@@ -33,5 +40,5 @@ abstract class PlayerDatabase: RoomDatabase() {
 
     abstract fun playerDao(): PlayerDao
 
-    abstract fun remoteKeysDao(): PlayerRemoteKeysDao
+    abstract fun playerRemoteKeysDao(): PlayerRemoteKeysDao
 }

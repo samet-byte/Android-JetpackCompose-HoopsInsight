@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Award(
-    val count: String? = null,
+    val count: Int? = null,
     val name: String? = null,
 )

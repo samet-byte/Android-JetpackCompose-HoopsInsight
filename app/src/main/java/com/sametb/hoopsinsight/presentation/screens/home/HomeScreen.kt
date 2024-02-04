@@ -1,13 +1,22 @@
 package com.sametb.hoopsinsight.presentation.screens.home
 
-import android.content.res.Configuration
+import android.util.Log
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.sametb.hoopsinsight.domain.model.player_paging.Player
+import com.sametb.hoopsinsight.presentation.common.ListContent
 import com.sametb.hoopsinsight.ui.theme.customBackgroundColor
-import com.sametb.hoopsinsight.util.functions.isProbablyRunningOnEmulator
 
 
 /*
@@ -19,9 +28,16 @@ import com.sametb.hoopsinsight.util.functions.isProbablyRunningOnEmulator
 
 @Composable
 fun HomeScreen(
-//    navController: NavHostController,
+    navController: NavHostController,
+    homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
-    HomeScreenContent()
+    val allPlayers = homeViewModel.getAllPlayers.collectAsLazyPagingItems()
+
+
+    HomeScreenContent(
+        players = allPlayers,
+        navController = navController
+    )
 }
 
 
@@ -29,12 +45,16 @@ fun HomeScreen(
 //@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun HomeScreenContent(
+    players: LazyPagingItems<Player>,
+    navController: NavHostController,
 ) {
     Scaffold(
         topBar = {HomeTopAppBar()},
-        backgroundColor = customBackgroundColor(darkThemeBgColorAlpha = .97f)
-
-    ){
-        Text(text = "$isProbablyRunningOnEmulator")
-    }
+        backgroundColor = customBackgroundColor(darkThemeBgColorAlpha = .97f),
+        content = { paddingValues -> Box(modifier = Modifier.padding(paddingValues)){
+            ListContent(players = players, navController = navController)
+        } }
+    )
 }
+
+private operator fun PaddingValues.plus(padding: Dp): Dp = this + padding

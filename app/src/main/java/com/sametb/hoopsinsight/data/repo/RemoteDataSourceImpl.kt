@@ -38,6 +38,6 @@ class RemoteDataSourceImpl(
     }
 
     override fun searchPlayers(name: String): Flow<PagingData<Player>> {
-        TODO("Not yet implemented")
+        return null!!
     }
 }

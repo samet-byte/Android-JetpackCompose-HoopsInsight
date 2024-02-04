@@ -19,7 +19,9 @@ data class PlayerRemoteKeys(
     val id: Int,
 
     val prevPage: Int?,
-    val nextPage: Int?
+    val nextPage: Int?,
 
-
+    // Last updated time in milliseconds, used to check if remote keys are expired
+    // or exceeds the validity period
+    val lastUpdated: Long?,
 )

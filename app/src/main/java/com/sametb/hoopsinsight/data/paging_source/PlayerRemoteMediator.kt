@@ -1,5 +1,7 @@
 package com.sametb.hoopsinsight.data.paging_source
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -9,6 +11,9 @@ import com.sametb.hoopsinsight.data.local.db.PlayerDatabase
 import com.sametb.hoopsinsight.data.remote.NBAApi
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
 import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKeys
+import com.sametb.hoopsinsight.util.constants.CacheConstants
+import com.sametb.hoopsinsight.util.constants.CacheConstants.CACHE_TIMEOUT
+import com.sametb.hoopsinsight.util.constants.CacheConstants.differenceInMinutes
 import javax.inject.Inject
 
 
@@ -27,27 +32,51 @@ class PlayerRemoteMediator
     ) : RemoteMediator<Int, Player>(){
 
         private val playerDao = nbaDatabase.playerDao()
-        private val playerRemoteKeysDao = nbaDatabase.remoteKeysDao()
+        private val playerRemoteKeysDao = nbaDatabase.playerRemoteKeysDao()
     private suspend fun getClosestRemoteKeyToCurrentPosition(state: PagingState<Int, Player>): PlayerRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id -> // allows not just id, for our case it is id
-                playerRemoteKeysDao.getRemoteKey(id)
+                playerRemoteKeysDao.getRemoteKeys(id)
             }
         }
     }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Player>): PlayerRemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { player ->
-            playerRemoteKeysDao.getRemoteKey(player.id)
+            playerRemoteKeysDao.getRemoteKeys(player.id)
         }
 
     }
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Player>): PlayerRemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { player ->
-            playerRemoteKeysDao.getRemoteKey(player.id)
+            playerRemoteKeysDao.getRemoteKeys(player.id)
         }
 
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun parseMillisToDate(millis: Long): String {
+        return java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(java.util.Date(millis))
+    }
+
+    override suspend fun initialize(): InitializeAction {
+        val currentTimestamp = System.currentTimeMillis()
+        val lastUpdated = playerRemoteKeysDao.getRemoteKeys(id = 1)?.lastUpdated ?: 0L
+
+//        Log.d(CacheConstants.LogTags.PLAYER_REMOTE_MEDIATOR, "initialize: currentTimestamp: ${parseMillisToDate(currentTimestamp)}")
+//        Log.d(CacheConstants.LogTags.PLAYER_REMOTE_MEDIATOR, "initialize: lastUpdated: ${parseMillisToDate(lastUpdated)}")
+//        log expiration time
+//        Log.d(CacheConstants.LogTags.PLAYER_REMOTE_MEDIATOR, "initialize: CACHE_TIMEOUT: ${parseMillisToDate(currentTimestamp + CACHE_TIMEOUT * 60 * 1000)}")
+
+
+        return if (differenceInMinutes(currentTimestamp, lastUpdated) <= CACHE_TIMEOUT) {
+//            Log.d(CacheConstants.LogTags.PLAYER_REMOTE_MEDIATOR, "initialize: UP TO DATE, SKIP INITIAL REFRESH")
+            InitializeAction.SKIP_INITIAL_REFRESH
+        } else {
+//            Log.d(CacheConstants.LogTags.PLAYER_REMOTE_MEDIATOR, "initialize: REFRESHING, LAUNCH INITIAL REFRESH")
+            InitializeAction.LAUNCH_INITIAL_REFRESH
+        }
     }
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Player>): MediatorResult {
@@ -86,7 +115,8 @@ class PlayerRemoteMediator
                             PlayerRemoteKeys(
                                 id = player.id,
                                 prevPage = prevPage,
-                                nextPage = nextPage
+                                nextPage = nextPage,
+                                lastUpdated = response.lastUpdated
                             )
                         }
                         playerRemoteKeysDao.addAllRemoteKeys(keys)

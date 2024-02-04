@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sametb.hoopsinsight.R
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
-import com.sametb.hoopsinsight.ui.theme.appBarBgContentColor
+import com.sametb.hoopsinsight.ui.theme.appBarBgAndContentColor
 import com.sametb.hoopsinsight.util.constants.ViewConstants
 
 
@@ -38,12 +38,12 @@ fun HomeTopAppBar(
         title = {
             Text(
                 text = "Explore",
-                color = appBarBgContentColor(ViewConstants.CONTENT),
+                color = appBarBgAndContentColor(ViewConstants.CONTENT),
                 fontFamily = basketballFontFamily
             )
         },
-        backgroundColor = appBarBgContentColor(ViewConstants.BACKGROUND),
-        contentColor = appBarBgContentColor(ViewConstants.CONTENT),
+        backgroundColor = appBarBgAndContentColor(ViewConstants.BACKGROUND),
+        contentColor = appBarBgAndContentColor(ViewConstants.CONTENT),
         actions = {
             IconButton(onClick = onSearchClicked) {
                 Icon(imageVector = Icons.Default.Search, contentDescription = stringResource(R.string.search_icon))

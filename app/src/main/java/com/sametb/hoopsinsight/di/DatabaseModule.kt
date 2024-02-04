@@ -33,7 +33,9 @@ object DatabaseModule {
             context,
             PlayerDatabase::class.java,
             RoomConstants.PLAYER_DATABASE
-        ).build()
+        )
+             .fallbackToDestructiveMigration() // if we change the schema, it will delete the database and recreate it
+             .build()
     }
 
 

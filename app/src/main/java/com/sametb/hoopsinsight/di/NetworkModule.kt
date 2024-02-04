@@ -6,6 +6,8 @@ import com.sametb.hoopsinsight.data.remote.NBAApi
 import com.sametb.hoopsinsight.data.repo.RemoteDataSourceImpl
 import com.sametb.hoopsinsight.domain.repo.IRemoteDataSource
 import com.sametb.hoopsinsight.util.constants.ApiConstants.CONTENT_TYPE
+import com.sametb.hoopsinsight.util.constants.ApiConstants.EMULATOR_LOCAL_BASE_URL
+import com.sametb.hoopsinsight.util.constants.ApiConstants.LOCAL_BASE_URL
 import com.sametb.hoopsinsight.util.constants.decideLocalBaseUrl
 import dagger.Module
 import dagger.Provides
@@ -50,7 +52,11 @@ object NetworkModule {
         val contentType = MediaType.get(CONTENT_TYPE)
 
         return Retrofit.Builder()
-            .baseUrl(decideLocalBaseUrl())
+            .baseUrl(
+                decideLocalBaseUrl()
+//                EMULATOR_LOCAL_BASE_URL
+//                LOCAL_BASE_URL
+            )
             .client(okHttpClient)
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
@@ -71,3 +77,11 @@ object NetworkModule {
         RemoteDataSourceImpl(nbaApi, playerDatabase)
 
 }
+
+/**
+ *     OkHttp Client automatically handles caching  for us
+ *     header(
+ *             name = HttpHeaders.CacheControl,
+ *             value = "public, max-age=$oneYearInSeconds, immutable"
+ *     )
+ */

@@ -22,7 +22,7 @@ data class Player(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
 
-    val awards: List<Award>? = emptyList(),
+    val awards: List<Award?>? = emptyList(),
     val cmsBio: String? = "",
     val info: Info,
     val rotowireBio: String? = "",

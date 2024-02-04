@@ -18,7 +18,7 @@ import com.sametb.hoopsinsight.domain.model.player_paging.PlayerRemoteKeys
 interface  PlayerRemoteKeysDao {
 
     @Query("SELECT * FROM player_remote_keys_table WHERE id = :id")
-    suspend fun getRemoteKey(id: Int): PlayerRemoteKeys?
+    suspend fun getRemoteKeys(id: Int): PlayerRemoteKeys?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllRemoteKeys(remoteKeys: List<PlayerRemoteKeys>)
