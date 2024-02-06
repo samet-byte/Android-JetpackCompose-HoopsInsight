@@ -6,6 +6,11 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.sametb.hoopsinsight.presentation.screens.details.DetailsScreen
+import com.sametb.hoopsinsight.presentation.screens.home.HomeScreen
+import com.sametb.hoopsinsight.presentation.screens.search.SearchScreen
+import com.sametb.hoopsinsight.presentation.screens.splash.SplashScreen
+import com.sametb.hoopsinsight.presentation.screens.welcome.WelcomeScreen
 import com.sametb.hoopsinsight.util.constants.NavConstants
 
 
@@ -18,15 +23,18 @@ import com.sametb.hoopsinsight.util.constants.NavConstants
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.Splash.route) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Splash.route
+    ) {
         composable(route = Screen.Splash.route) {
-
+            SplashScreen(navController = navController)
         }
         composable(route = Screen.Welcome.route) {
-
+            WelcomeScreen(navController = navController)
         }
         composable(route = Screen.Home.route) {
-
+            HomeScreen(navController = navController)
         }
         composable(
             route = Screen.Details.route,
@@ -36,10 +44,10 @@ fun SetupNavGraph(navController: NavHostController) {
                 }
             )
         ) {
-
+            DetailsScreen(navController = navController)
         }
         composable(route = Screen.Search.route) {
-
+            SearchScreen(navController = navController)
         }
     }
 }
