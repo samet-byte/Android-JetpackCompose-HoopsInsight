@@ -1,6 +1,7 @@
 package com.sametb.hoopsinsight.presentation.screens.home
 
 import android.util.Log
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -8,16 +9,19 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sametb.hoopsinsight.domain.model.player_paging.Player
 import com.sametb.hoopsinsight.nav.Screen
 import com.sametb.hoopsinsight.presentation.common.ListContent
 import com.sametb.hoopsinsight.ui.theme.customBackgroundColor
+import com.sametb.hoopsinsight.ui.theme.statusBarColor
 
 
 /*
@@ -34,12 +38,18 @@ fun HomeScreen(
 ) {
     val allPlayers = homeViewModel.getAllPlayers.collectAsLazyPagingItems()
 
+    // pop back from player status bar color issue fix
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(
+        color = statusBarColor(darkTheme = isSystemInDarkTheme())
+    )
 
     HomeScreenContent(
         players = allPlayers,
         navController = navController
     )
 }
+
 
 
 //@Preview

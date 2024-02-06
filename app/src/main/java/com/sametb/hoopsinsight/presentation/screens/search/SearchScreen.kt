@@ -1,6 +1,7 @@
 package com.sametb.hoopsinsight.presentation.screens.search
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -11,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sametb.hoopsinsight.presentation.common.ListContent
+import com.sametb.hoopsinsight.ui.theme.statusBarColor
 
 
 /*
@@ -26,6 +29,13 @@ fun SearchScreen(
     navController: NavHostController,
     searchViewModel: SearchViewModel = hiltViewModel()
 ) {
+    // pop back from player status bar color issue fix
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(
+        color = statusBarColor(darkTheme = isSystemInDarkTheme())
+    )
+
+
     SearchScreenContent(
         searchViewModel = searchViewModel,
         navController = navController

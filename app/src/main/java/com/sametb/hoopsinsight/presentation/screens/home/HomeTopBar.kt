@@ -38,7 +38,7 @@ fun HomeTopAppBar(
     TopAppBar(
         title = {
             Text(
-                text = "${AppConstants.APP_NAME} (NBA)",
+                text = "${AppConstants.APP_NAME}",
                 color = appBarBgAndContentColor(ViewConstants.CONTENT),
                 fontFamily = basketballFontFamily
             )

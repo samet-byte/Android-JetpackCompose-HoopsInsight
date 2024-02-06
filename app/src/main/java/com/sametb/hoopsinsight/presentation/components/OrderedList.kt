@@ -2,8 +2,6 @@ package com.sametb.hoopsinsight.presentation.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -11,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.sametb.hoopsinsight.domain.model.player_paging.Luka_Dončić
+import com.sametb.hoopsinsight.domain.model.player_paging.sub.Award
 import com.sametb.hoopsinsight.ui.theme.SMALL_PADDING
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.textColor
@@ -28,28 +28,33 @@ import com.sametb.hoopsinsight.ui.theme.textColor
 @Composable
 fun OrderedList(
     title: String,
-    items: List<String>,
+    items: List<Award>?,
     textColor: Color,
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.Start
     ) {
         Text(
             modifier = Modifier
-                .padding(SMALL_PADDING)
+                .padding(vertical = SMALL_PADDING)
             ,
             text = title,
             color = textColor,
             fontFamily = basketballFontFamily,
             fontSize = MaterialTheme.typography.labelLarge.fontSize,
         )
-        items.forEach {
+        items?.forEach {award ->
             Text(
-                text = it,
+//                modifier = Modifier
+//                    .padding(SMALL_PADDING),
+                text = "${award.count}x ${award.name}",
                 color = textColor,
                 fontFamily = basketballFontFamily,
-                fontSize = MaterialTheme.typography.labelMedium.fontSize,
+//                fontSize = MaterialTheme.typography.labelMedium.fontSize,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
+
         }
     }
 }
@@ -60,7 +65,7 @@ fun OrderedList(
 fun OrderedListPreview() {
     OrderedList(
         title = "Awards",
-        items = listOf("1x MVP", "1x ROY", "4x All-Star"),
+        items = Luka_Dončić.awards,
         textColor = textColor()
     )
 }

@@ -139,5 +139,10 @@ dependencies {
     implementation ("com.github.samet-byte:SamCustomStuffLibrary:1.3")
 
     // Icons material3
+    //implementation ("androidx.compose.material:material-icons-extended:1.6.0")
+
+    // for svg
+//    implementation("io.coil-kt:coil-svg:2.5.0")
+
 
 }

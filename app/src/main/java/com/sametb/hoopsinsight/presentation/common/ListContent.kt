@@ -1,5 +1,6 @@
 package com.sametb.hoopsinsight.presentation.common
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,8 +25,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
@@ -43,6 +47,7 @@ import com.sametb.hoopsinsight.ui.theme.MEDIUM_PADDING
 import com.sametb.hoopsinsight.ui.theme.SMALL_PADDING
 import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.ui.theme.cardInfoBgColor
+import com.sametb.hoopsinsight.util.constants.ApiConstants
 import com.sametb.hoopsinsight.util.constants.randomRatingWithPoint5
 
 
@@ -144,40 +149,65 @@ fun PlayerItem(
                     .padding(MEDIUM_PADDING)
                     ,
             ) {
-                Text(
-                    text = "#${player.info.JERSEY} | ${player.info.DISPLAY_LAST_COMMA_FIRST}",
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.headlineSmall.fontSize,
-                    fontWeight = Bold,
-                    fontFamily = basketballFontFamily,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis // ... if text is too long
-                )
-                Text(
-                    text = player.cmsBio ?: "No bio available",
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.labelSmall.fontSize,
-                    fontFamily = basketballFontFamily,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis // ... if text is too long
-                )
+               Row(
+                     modifier = Modifier
+                          .fillMaxWidth()
+               ) {
+                   Text(
+                       text = "#${player.info.JERSEY}  ${player.info.DISPLAY_LAST_COMMA_FIRST}",
+                       color = Color.White,
+                       fontSize = MaterialTheme.typography.headlineLarge.fontSize,
+                       fontWeight = Bold,
+                       fontFamily = basketballFontFamily,
+                       maxLines = 1,
+                       overflow = TextOverflow.Ellipsis // ... if text is too long
+                   )
+                   Box(
+                       contentAlignment = Alignment.CenterEnd,
+                       modifier = Modifier
+                           .fillMaxWidth()
+                   )
+                   {
+                       Image(
+                           painter = rememberImagePainter(ApiConstants.NBAOfficialImage.teamLogoUrl(player.info.TEAM_ID!!))
+                           {error(R.drawable.basketball_ball)},
+                           contentDescription = "Team Logo",
+                           modifier = Modifier
+                               .padding(start = SMALL_PADDING)
+                               .height(36.dp)
+                       )
+                   }
+               }
                 Row(
                     modifier = Modifier
-                        .padding(SMALL_PADDING)
+//                        .padding(SMALL_PADDING)
                     ,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RatingWidget(
-                        modifier = Modifier.padding(SMALL_PADDING),
-                        rating = randomRating // TODO: 3.02.2024 get rating from player
+                        modifier = Modifier
+                            .padding(vertical = SMALL_PADDING)
+                        ,
+                        rating = 4.7, // TODO: 3.02.2024 get rating from player
                     )
                     Text(
-                        text = "($randomRating)",
+                        text = "(4.5)",
                         color = Color.White,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         fontFamily = basketballFontFamily,
+                        modifier = Modifier
+                            .padding(start = SMALL_PADDING)
+                        ,
                     )
                 }
+                Text(
+                    text = player.cmsBio ?: "No bio available",
+                    color = Color.White,
+                    fontSize = MaterialTheme.typography.labelSmall.fontSize,
+                    fontFamily = FontFamily.Monospace,
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis // ... if text is too long
+                )
             }
         }
     }
@@ -213,8 +243,8 @@ fun handlePagingResult(
     }
 }
 
-//@Preview(showBackground = true)
-//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PlayerItemPreview() {
     PlayerItem(

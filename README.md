@@ -12,7 +12,7 @@
 	<img src="https://img.shields.io/github/last-commit/samet-byte/Android-JetpackCompose-HoopsInsight?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
 	<img src="https://img.shields.io/github/languages/top/samet-byte/Android-JetpackCompose-HoopsInsight?style=flat&color=0080ff" alt="repo-top-language">
 	<img src="https://img.shields.io/github/languages/count/samet-byte/Android-JetpackCompose-HoopsInsight?style=flat&color=0080ff" alt="repo-language-count">
-    
+
 <p>
 <p align="center">
 		<em>Developed with the software and tools below.</em>
@@ -25,18 +25,19 @@
 	<img src="https://img.shields.io/badge/JetBrains-000000.svg?style=flat&logo=JetBrains&logoColor=white" alt="JetBrains">
     <img src="https://img.shields.io/badge/AndroidStudio-000000.svg?style=flat&logo=AndroidStudio&logoColor=green" alt="Android Studio">
     <img src="https://img.shields.io/badge/Jetpack Compose-000000.svg?style=flat&logo=JetpackCompose&logoColor=blue" alt="Jetpack Compose">
-    
+
 </p>
 <hr>
 
-##  Quick Links
+## Quick Links
 
 > - [ Overview](#-overview)
 > - [ Features](#-features)
 > - [ Repository Structure](#-repository-structure)
 > - [ Modules](#-modules)
 > - [ Getting Started](#-getting-started)
->   - [ Installation](#-installation)
+    >
+- [ Installation](#-installation)
 >   - [ Running Android-JetpackCompose-HoopsInsight](#-running-Android-JetpackCompose-HoopsInsight)
 >   - [ Tests](#-tests)
 > - [ Project Roadmap](#-project-roadmap)
@@ -46,17 +47,22 @@
 
 ---
 
-##  Overview
+## Overview
 
-The NBA Data Viewer is an Android application built using Jetpack Compose, a modern UI toolkit for building native UIs. The app leverages various libraries and technologies to provide a seamless and engaging user experience.
+The NBA Data Viewer is an Android application built using Jetpack Compose, a modern UI toolkit for
+building native UIs. The app leverages various libraries and technologies to provide a seamless and
+engaging user experience.
 
 ---
 
 ## Screenshots
 
 Samples from both dark and light themes are shown below:
-
+<div style="text-align: center;">
 <img  width="30%" height="auto" src="/screenshot/splash.png"/>
+<img  width="30%" height="auto" src="/screenshot/welcome1.png"/>
+<img  width="30%" height="auto" src="/screenshot/welcome2.png"/>
+<img  width="30%" height="auto" src="/screenshot/welcome3.png"/>
 <img  width="30%" height="auto" src="/screenshot/home_light.png"/>
 <img  width="30%" height="auto" src="/screenshot/home.png"/>
 <img  width="30%" height="auto" src="/screenshot/details_collapsed_mj.png">
@@ -66,27 +72,32 @@ Samples from both dark and light themes are shown below:
 <img  width="30%" height="auto" src="/screenshot/details_expanded_larry.png">
 <img  width="30%" height="auto" src="/screenshot/search_complete.png">
 <img  width="30%" height="auto" src="/screenshot/error_connection.png">
-
+</div>
 ---
 
 ## Key Components
 
-1. **Paging 3 Library:** Efficiently handles large data sets, enabling smooth pagination and efficient data loading from the REST API server.
+1. **Paging 3 Library:** Efficiently handles large data sets, enabling smooth pagination and
+   efficient data loading from the REST API server.
 
-2. **Ktor Framework:** The backend is powered by the Ktor framework, ensuring reliable communication between the Android app and the server.
+2. **Ktor Framework:** The backend is powered by the Ktor framework, ensuring reliable communication
+   between the Android app and the server.
 
 3. **Coil:** Optimizes image loading and caching for a faster and more responsive user interface.
 
-4. **Room Database (RoomDB):** Enables local data storage and retrieval, simplifying database operations.
+4. **Room Database (RoomDB):** Enables local data storage and retrieval, simplifying database
+   operations.
 
-5. **Hilt Dagger DI:** Manages dependency injection, facilitating a modular and maintainable codebase.
-
+5. **Hilt Dagger DI:** Manages dependency injection, facilitating a modular and maintainable
+   codebase.
 
 ---
 
 ## Data Source
 
-The app fetches data from a REST API server developed using the Ktor framework, which interacts with the NBA.com API. Additionally, a Python script is used to automate data retrieval from the NBA.com website.
+The app fetches data from a REST API server developed using the Ktor framework, which interacts with
+the NBA.com API. Additionally, a Python script is used to automate data retrieval from the NBA.com
+website.
 
 ---
 
@@ -101,7 +112,7 @@ The app fetches data from a REST API server developed using the Ktor framework, 
 
 ---
 
-##  Repository Structure
+## Repository Structure
 
 ```sh
 └── Android-JetpackCompose-HoopsInsight/
@@ -143,81 +154,81 @@ The app fetches data from a REST API server developed using the Ktor framework, 
 
 ---
 
-##  Modules
+## Modules
 
 <details closed><summary>.</summary>
 
-| File                                                                                                                     | Summary                         |
-| ---                                                                                                                      | ---                             |
-| [build.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/build.gradle.kts)       
-| [settings.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/settings.gradle.kts) 
-| [gradlew.bat](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/gradlew.bat)                 
+| File                                                                                                                     | Summary |
+|--------------------------------------------------------------------------------------------------------------------------|---------|
+| [build.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/build.gradle.kts)       |         |
+| [settings.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/settings.gradle.kts) |         |
+| [gradlew.bat](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/gradlew.bat)                 |         |
 
 </details>
 
 <details closed><summary>app</summary>
 
-| File                                                                                                                       | Summary                         |
-| ---                                                                                                                        | ---                             |
-| [proguard-rules.pro](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/proguard-rules.pro) 
-| [build.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/build.gradle.kts)     
+| File                                                                                                                       | Summary |
+|----------------------------------------------------------------------------------------------------------------------------|---------|
+| [proguard-rules.pro](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/proguard-rules.pro) |         |
+| [build.gradle.kts](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/build.gradle.kts)     |         |
 
 </details>
 
 <details closed><summary>app.src.androidTest.java.com.sametb.hoopsinsight</summary>
 
-| File                                                                                                                                                                                    | Summary                         |
-| ---                                                                                                                                                                                     | ---                             |
-| [ExampleInstrumentedTest.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/androidTest/java/com/sametb/hoopsinsight/ExampleInstrumentedTest.kt) 
+| File                                                                                                                                                                                    | Summary |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [ExampleInstrumentedTest.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/androidTest/java/com/sametb/hoopsinsight/ExampleInstrumentedTest.kt) |         |
 
 </details>
 
 <details closed><summary>app.src.test.java.com.sametb.hoopsinsight</summary>
 
-| File                                                                                                                                                             | Summary                         |
-| ---                                                                                                                                                              | ---                             |
-| [ExampleUnitTest.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/test/java/com/sametb/hoopsinsight/ExampleUnitTest.kt) 
+| File                                                                                                                                                             | Summary |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [ExampleUnitTest.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/test/java/com/sametb/hoopsinsight/ExampleUnitTest.kt) |         |
 
 </details>
 
 <details closed><summary>app.src.main.java.com.sametb.hoopsinsight</summary>
 
-| File                                                                                                                                                       | Summary                         |
-| ---                                                                                                                                                        | ---                             |
-| [MainActivity.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/MainActivity.kt) 
+| File                                                                                                                                                       | Summary |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [MainActivity.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/MainActivity.kt) |         |
 
 </details>
 
 <details closed><summary>app.src.main.java.com.sametb.hoopsinsight.ui.theme</summary>
 
-| File                                                                                                                                                  | Summary                         |
-| ---                                                                                                                                                   | ---                             |
-| [Color.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Color.kt) 
-| [Theme.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Theme.kt) 
-| [Type.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Type.kt)   
+| File                                                                                                                                                  | Summary |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [Color.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Color.kt) |         |
+| [Theme.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Theme.kt) |         |
+| [Type.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/ui/theme/Type.kt)   |         |
 
 </details>
 
 <details closed><summary>app.src.main.java.com.sametb.hoopsinsight.util.constants</summary>
 
-| File                                                                                                                                                                      | Summary                         |
-| ---                                                                                                                                                                       | ---                             |
-| [NavConstants.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/util/constants/NavConstants.kt) 
+| File                                                                                                                                                                      | Summary |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [NavConstants.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/util/constants/NavConstants.kt) |         |
 
 </details>
 
 <details closed><summary>app.src.main.java.com.sametb.hoopsinsight.nav</summary>
 
-| File                                                                                                                                                   | Summary                         |
-| ---                                                                                                                                                    | ---                             |
-| [NavGraph.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/nav/NavGraph.kt) 
-| [Screen.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/nav/Screen.kt)     
+| File                                                                                                                                                   | Summary |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| [NavGraph.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/nav/NavGraph.kt) |         |
+| [Screen.kt](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/master/app/src/main/java/com/sametb/hoopsinsight/nav/Screen.kt)     |         |
 
 </details>
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ***Requirements***
 
@@ -225,7 +236,7 @@ Ensure you have the following dependencies installed on your system:
 
 * **Kotlin**: `version 1.8.10`
 
-###  Installation
+### Installation
 
 1. Clone the Android-JetpackCompose-HoopsInsight repository:
 
@@ -245,7 +256,7 @@ cd Android-JetpackCompose-HoopsInsight
 gradle build
 ```
 
-###  Running Android-JetpackCompose-HoopsInsight
+### Running Android-JetpackCompose-HoopsInsight
 
 Use the following command to run Android-JetpackCompose-HoopsInsight:
 
@@ -253,7 +264,7 @@ Use the following command to run Android-JetpackCompose-HoopsInsight:
 java -jar build/libs/myapp.jar
 ```
 
-###  Tests
+### Tests
 
 To execute tests, run:
 
@@ -263,13 +274,18 @@ gradle test
 
 ---
 
-##  Contributing
+## Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
 
-- **[Submit Pull Requests](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/discussions)**: Share your insights, provide feedback, or ask questions.
-- **[Report Issues](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/issues)**: Submit bugs found or log feature requests for Android-jetpackcompose-hoopsinsight.
+- *
+  *[Submit Pull Requests](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/blob/main/CONTRIBUTING.md)
+  **: Review open PRs, and submit your own PRs.
+- *
+  *[Join the Discussions](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/discussions)
+  **: Share your insights, provide feedback, or ask questions.
+- **[Report Issues](https://github.com/samet-byte/Android-JetpackCompose-HoopsInsight/issues)**:
+  Submit bugs found or log feature requests for Android-jetpackcompose-hoopsinsight.
 
 <details closed>
     <summary>Contributing Guidelines</summary>
@@ -292,7 +308,8 @@ Contributions are welcome! Here are several ways you can contribute:
    ```sh
    git push origin new-feature-x
    ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
+7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe
+   the changes and their motivations.
 
 Once your PR is reviewed and approved, it will be merged into the main branch.
 
@@ -300,15 +317,16 @@ Once your PR is reviewed and approved, it will be merged into the main branch.
 
 ---
 
-##  License
+## License
 
-Non of the files in this repository are licensed. You are free to use, modify, and distribute the code as you see fit.
+Non of the files in this repository are licensed. You are free to use, modify, and distribute the
+code as you see fit.
 
 
 
 ---
 
-##  Acknowledgments
+## Acknowledgments
 
 - @stevdza-san
 

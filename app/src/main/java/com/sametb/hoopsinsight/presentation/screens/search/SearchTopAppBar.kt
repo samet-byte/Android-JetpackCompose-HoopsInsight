@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import com.sametb.hoopsinsight.R
+import com.sametb.hoopsinsight.ui.theme.basketballFontFamily
 import com.sametb.hoopsinsight.util.constants.ViewConstants
 
 /*
@@ -69,7 +70,8 @@ fun SearchWidget(
                     modifier = Modifier
                         .alpha(alpha = ContentAlpha.medium),
                     text = "Search here...",
-                    color = Color.White
+                    color = Color.White,
+                    fontFamily = basketballFontFamily
                 )
             },
             textStyle = TextStyle(

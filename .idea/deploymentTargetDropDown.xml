@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="BottomSheetContent">
+        <State />
+      </entry>
       <entry key="ShimmerItemPreview">
         <State>
           <targetSelectedWithDropDown>
@@ -47,7 +50,7 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-03T18:52:25.258339Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-02-05T20:51:45.390415Z" />
         </State>
       </entry>
     </value>
